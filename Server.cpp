@@ -1,4 +1,4 @@
- #ifndef UNICODE
+#ifndef UNICODE
 #define UNICODE
 #endif
 #include <winsock2.h>
@@ -349,7 +349,14 @@ LRESULT CALLBACK WindowProc(HWND hwnd,UINT uMsg,WPARAM wParam,LPARAM lParam) {
 					break;
 				}
 				case CHAT:{
-					
+					if(chatW!=NULL){
+						MessageBox(NULL,L"You can only chat one client at a time",L"Warning",MB_OK);
+						break;
+					}
+					//2/3 client.cpp
+					chatW=CreateWindow(L"Window",L"Private Chat",
+						WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX|WS_MAXIMIZEBOX|WS_VISIBLE,
+						200,200,233,130,NULL,NULL,hIns,NULL);
 					break;
 				}
 			}
