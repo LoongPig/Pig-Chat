@@ -1,16 +1,14 @@
 # Pig-Chat
-## Actor
 
-**Name:** LoongPig
+**Actor:** LoongPig
 
-**LuoguID:** 1372772
+**Actor's LuoguID:** 1372772
+
+**Actor's QQ ID:** 3823635632
 
 ## Introduction
-This is a project for online chatting.You can use it for online chatting in the LAN.
 
-## Update 
+This is a project for online chatting.
 
-### Pig-Chat 1.6-pre
-- Add Kick Button.
-- Solve the RE problem.
-- Client can connect server many times.
+## Update
+
