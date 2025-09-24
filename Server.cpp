@@ -19,7 +19,7 @@
 using namespace std;
 const int MS=65536;
 HWND setPortT,CmdT,talkT;
-HWND setPortB,userListB,gIPB,gIDB,uListB,cleanB,chatB/*,clearB*/,kickB,warnB;
+HWND setPortB,userListB,gIPB,gIDB,uListB,cleanB,chatB/*,clearB*/,kickB,warnB,sendB;
 HWND Main,ListW,uListL,chatW,chatTalk,chatSend;
 HINSTANCE hIns;
 SOCKET serverSock;
@@ -329,34 +329,19 @@ LRESULT CALLBACK WindowProc(HWND hwnd,UINT uMsg,WPARAM wParam,LPARAM lParam) {
 					}
 					kickB=CreateWindow(L"Button",L"Kick",
 						WS_VISIBLE|WS_CHILD|BS_PUSHBUTTON,
-						10,235,185,60,ListW,(HMENU)KICK,NULL,NULL);
+						10,235,400,60,ListW,(HMENU)KICK,NULL,NULL);
 					// clearB=CreateWindow(L"Button",L"Clear",
 					// 	WS_VISIBLE|WS_CHILD|BS_PUSHBUTTON,
 					// 	150,235,120,60,ListW,(HMENU)CLEAR,NULL,NULL);
-					chatB=CreateWindow(L"Button",L"Chat",
-						WS_VISIBLE|WS_CHILD|BS_PUSHBUTTON,
-						210,235,185,60,ListW,(HMENU)CHAT,NULL,NULL);
 					SendMessage(uListL,WM_SETFONT,(WPARAM)fontT,MAKELPARAM(TRUE,0));
 					SendMessage(kickB,WM_SETFONT,(WPARAM)fontT,MAKELPARAM(TRUE,0));
 					//SendMessage(clearB,WM_SETFONT,(WPARAM)fontT,MAKELPARAM(TRUE,0));
-					SendMessage(chatB,WM_SETFONT,(WPARAM)fontT,MAKELPARAM(TRUE,0));
 					// if(clients.size()) addItem(uListL,L"Everyone",L"NULL",-1);
 					for(auto k:clients) line[k]=addItem(uListL,StrToWstr(names[k]).c_str(),StrToWstr(IP[k]).c_str(),(int)k);
 					break;
 				}
 				case KICK:{
 					KickItem(uListL,gSelID);
-					break;
-				}
-				case CHAT:{
-					if(chatW!=NULL){
-						MessageBox(NULL,L"You can only chat one client at a time",L"Warning",MB_OK);
-						break;
-					}
-					//2/3 client.cpp
-					chatW=CreateWindow(L"Window",L"Private Chat",
-						WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX|WS_MAXIMIZEBOX|WS_VISIBLE,
-						200,200,233,130,NULL,NULL,hIns,NULL);
 					break;
 				}
 			}
