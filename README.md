@@ -12,3 +12,10 @@ This is a project for online chatting.
 
 ## Update
 
+### Pig-Chat 1.6-pre
+- Add Kick Button.
+- Solve the RE problem.
+- Client can connect server many times.
+
+### Pig-Chat 1.7
+- Improve GUI of the Server.
